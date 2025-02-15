@@ -139,6 +139,23 @@ const BasicSearchForm: React.FC = () => {
       <Form.Item label="Setter Name">
         <Input value={uiSearchParams.settername} onChange={(e) => updateFilters({ settername: e.target.value })} />
       </Form.Item>
+      
+      {/* TODO: only show if user is logged in  */}
+      <Form.Item label="Logbook">
+        <Select
+          mode="tags"
+          style={{ width: '100%' }}
+          placeholder="filter"
+          onChange={(value) => updateFilters({ filterLogbook: value })}
+          options={[
+            { label: 'all climbs', value: 'all' },
+            { label: 'sent', value: 'sent' },
+            { label: 'attempted', value: 'attempted' },
+            { label: 'not attempted', value: 'notattempted' },
+            { label: 'liked', value: 'liked' }
+          ]}
+        />
+      </Form.Item>
     </Form>
   );
 };
