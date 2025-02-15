@@ -83,6 +83,11 @@ export const searchClimbs = async (
   if (searchParams.name) {
     whereConditions.push(sql`${tables.climbs.name} ILIKE ${`%${searchParams.name}%`}`);
   }
+
+  if (searchParams.settername) {
+    whereConditions.push(sql`${tables.climbs.setterUsername} ILIKE ${`%${searchParams.settername}%`}`);
+  }
+
   const anyHolds = holdsToFilter.filter(([, value]) => value === 'ANY').map(([key]) => Number(key));
   const notHolds = holdsToFilter.filter(([, value]) => value === 'NOT').map(([key]) => Number(key));
 
